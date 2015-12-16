@@ -1,0 +1,35 @@
+<div ng-controller="UsersController as profile" class="z-depth-2">
+  <h3 class="flow-text">I Like:</h3>
+  <span ng-repeat="food in profile.getCurrentUserLikes() track by $index">
+    <div ng-click="profile.addNeed($event,food)" class="chip">
+      {{food}}
+      <i ng-click="profile.removeLike($event,food)">X</i>
+    </div>
+    &nbsp;
+  </span>
+  <div class="row">
+    <span><div class="input-field col s2">
+      <input ng-model="like" type="text" class="validate">
+      <label class="active" for="profile.newFood">New Like</label>
+      <button ng-click="profile.newLike(like)" type="submit" class="btn waves-effect waves-light" name="action">
+        add
+      </button>
+    </span>
+    </div>
+  </div>
+
+  <div class="z-depth-1" style="height: 300px">
+    <h3 class="flow-text">I need:</h3>
+    <span ng-repeat="food in profile.needs track by $index">
+      <div class="chip">
+        {{food[0]}}
+        <i ng-click="profile.removeNeed($event,food)">X</i>
+      </div>
+      &nbsp;
+    </span>
+      <div ng-click="profile.sendRequest(profile.needs)" id="need-button">
+        <h3 class="center-align"><a class="waves-effect waves-light btn-large">Feed me!</a></h3>
+      </div>
+  </div>
+
+</div>

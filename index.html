@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="FeedBeacon">
+  <head>
+    <meta charset="utf-8">
+    <title>FeedBeacon</title>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/controllers/usersController.js"></script>
+    <script src="js/controllers/restaurantsController.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/appRouter.js"></script>
+    <script src="js/jqueryInit.js"></script>
+
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body class="grey lighten-3">
+
+<!-- CONDENSE THIS AS CUSTOM DIRECTIVE -->
+    <nav class="orange darken-3" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" ui-sref="home" class="brand-logo"><i>feedBeacon</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a ui-sref="signup">sign up as Eater</a></li>
+        <li><a ui-sref="signup_restaurant">sign up as Feeder</a></li>
+        <li><a ui-sref="login">login</a></li>
+        <li><a ui-sref="signout">sign out</a></li>
+      </ul>
+      <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+        <li><a ui-sref="signup">sign up as Eater</a></li>
+        <li><a ui-sref="signup_restaurant">sign up as Feeder</a></li>
+        <li><a ui-sref="login">login</a></li>
+        <li><a ui-sref="signout">sign out</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+<!--END CONDENSE THIS -->
+
+  <div class="container col s6 offset-by 6" ui-view>
+  </div>
+
+
+  </body>
+</html>
