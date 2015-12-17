@@ -57,7 +57,7 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
     }
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/restaurant/login',
+      url: 'https://thawing-plains-5333.herokuapp.com/restaurant/login'||'http://localhost:3000/restaurant/login',
       data: Restaurant.restoUserForLogin,
       headers: {'Content-Type': 'application/json'}
     }).then( (data) => {
