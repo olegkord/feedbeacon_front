@@ -13,6 +13,39 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
     return Restaurant.currentRestoUser;
   }
 
+  self.getCurrentTags = function() {
+    return Restaurant.currentRestoUser.foodTypes;
+  }
+
+  self.removeTag = function($event, tag) {
+
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $http({
+      method: 'PUT',
+      url: 'https://thawing-plains-5333.herokuapp.com/restaurant/' + Restaurant.currentRestoUser._id || 'http://localhost:3000/restaurant/' + Restaurant.currentRestoUser._id,
+      data: {pullTag: tag},
+      headers: {'Content-Type': 'application/json'}
+    }).then( (restaurant) => {
+      Restaurant.currentRestoUser.foodTypes = restaurant.data.foodTypes;
+      console.log('restaurant updated');
+    })
+  }
+
+  self.addTag = function(newTag) {
+    Restaurant.currentRestoUser.foodTypes.push(newTag);
+    $http({
+      method: 'PUT',
+      url: 'https://thawing-plains-5333.herokuapp.com/restaurant/' + Restaurant.currentRestoUser._id || 'http://localhost:3000/restaurant/' + Restaurant.currentRestoUser._id,
+      data: {newTag: newTag},
+      headers: {'Content-Type': 'application/json'}
+    }).then( (restaurant) => {
+      Restaurant.currentRestoUser.foodTypes = restaurant.data.foodTypes;
+      console.log('restaurant updated!');
+      self.newTag = "";
+    });
+  }
 
   self.signIn = function() {
     if (Object.keys(self.logInRestaurant)) {

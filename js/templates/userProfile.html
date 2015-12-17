@@ -9,9 +9,9 @@
   </span>
   <div class="row">
     <span><div class="input-field col s2">
-      <input ng-model="like" type="text" class="validate">
+      <input ng-model="profile.like" type="text" class="validate">
       <label class="active" for="profile.newFood">New Like</label>
-      <button ng-click="profile.newLike(like)" type="submit" class="btn waves-effect waves-light" name="action">
+      <button ng-click="profile.newLike(profile.like)" type="submit" class="btn waves-effect waves-light" name="action">
         add
       </button>
     </span>

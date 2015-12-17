@@ -71,6 +71,7 @@ function UsersController($rootScope, $state, $http, User, Socket) {
     }).then( (user) => {
       User.currentUser.foodTypes = user.data.foodTypes;
       console.log('user updated!');
+      self.like = "";
     });
    }
 
