@@ -115,4 +115,8 @@ function UsersController($rootScope, $state, $http, User, Socket) {
     self.sendRequest = function(needs) {
       Socket.emit('user request', {needs: needs})
     }
+
+    Socket.on('reservation', function(data) {
+      console.log('RESERVATION!!')
+    })
   }

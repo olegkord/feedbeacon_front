@@ -8,6 +8,7 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
 
   self.newRestaurant = {};
   self.logInRestaurant = {};
+  self.reservations = {};
 
   self.getCurrent = function() {
     return Restaurant.currentRestoUser;
@@ -85,5 +86,20 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
       $state.go('login_restaurant');
     })
   }
+  ////socket listeners:
 
+  Socket.on('user reservation', (reservation) => {
+    console.log('RECEIVED AT RESTAURANT!');
+    if (intersect(self.getCurrentTags, reservation)) {
+
+    }
+
+  })
+
+  //helper function:
+  function intersect(target, incoming) {
+    return incoming.some( (v) => {
+      return target.indexOf(v) >= 0;
+    });
+  }
 }

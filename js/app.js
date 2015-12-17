@@ -6,16 +6,19 @@ angular.module('FeedBeacon',[
   .controller('UsersController', UsersController)
   .controller('RestaurantsController', RestaurantsController)
   .controller('SignoutController', SignoutController)
-  .factory('User', function() {
+  .factory('Socket', Socket)
+  .factory('User', ['Socket', function(Socket) {
     //include private variables here!!!
-
+    Socket.on('reservation', function(data) {
+      console.log('RESERVATION!!')
+    })
     /// IMPORTANT!
     return {
       isLoggedIn: false,
       currentUser: {},
       userForLogin: {}
     };
-  })
+  }])
   .factory('Restaurant', function() {
     //local variables here
 
@@ -23,10 +26,10 @@ angular.module('FeedBeacon',[
     return {
       isLoggedIn: false,
       currentRestoUser: {},
-      restoUserForLogin: {}
+      restoUserForLogin: {},
+      reservations: {}
     }
   })
-  .factory('Socket', Socket)
   .run(['$rootScope','$state','User', 'Restaurant', function($rootScope, $state, User, Restaurant) {
     $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
 
