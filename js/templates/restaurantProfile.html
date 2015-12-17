@@ -1,1 +1,28 @@
-This will be a restaurant profile page.
+
+<div ng-controller="RestaurantsController as restaurant" class="container">
+  <div class="content container white z-depth-2">
+    <div class="section">
+        <div class="row">
+          <div class="col s6 m7">
+            <div class="card small">
+              <div class="card-image">
+                <img src="http://www.altmanltg.com/altman-project-gallery/original-joes/original-joes-logo.jpg">
+              </div>
+              <div>
+                <h4 class="flow-text" ng-bind="restaurant.getCurrent().restaurantName">Thing</h4>
+              <div>
+              <div class="card-action">
+                <a href="#">Your Website</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+  </div>
+  </div>
+  <div class="col s6 m5">
+    STUFF!
+  </div>
+  </div>
+</div>

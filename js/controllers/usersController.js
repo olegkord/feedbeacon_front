@@ -21,7 +21,7 @@ function UsersController($rootScope, $state, $http, User, Socket) {
     }
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/user/login',
+      url: 'https://thawing-plains-5333.herokuapp.com/user/login'||'http://localhost:3000/user/login',
       data: User.userForLogin,
       headers: {'Content-Type': 'application/json'}
     }).then( (data) => {
@@ -46,7 +46,7 @@ function UsersController($rootScope, $state, $http, User, Socket) {
     self.newUser.foodTypes = self.newUser.foodTypes.split(', ');
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/user/new',
+      url: 'https://thawing-plains-5333.herokuapp.com/user/new'||'http://localhost:3000/user/new',
       data: self.newUser,
       headers: {'Content-Type': 'application/json'}
     }).then( (user) => {
@@ -65,7 +65,7 @@ function UsersController($rootScope, $state, $http, User, Socket) {
     //update database user object with the new like
     $http({
       method: 'PUT',
-      url: 'http://localhost:3000/user/' + User.currentUser._id,
+      url: 'https://thawing-plains-5333.herokuapp.com/user/' + User.currentUser._id||'http://localhost:3000/user/' + User.currentUser._id,
       data: {newLike: like},
       headers: {'Content-Type': 'application/json'}
     }).then( (user) => {
@@ -81,7 +81,7 @@ function UsersController($rootScope, $state, $http, User, Socket) {
 
      $http({
        method: 'PUT',
-       url: 'http://localhost:3000/user/' + User.currentUser._id,
+       url: 'https://thawing-plains-5333.herokuapp.com/user/' + User.currentUser._id||'http://localhost:3000/user/' + User.currentUser._id,
        data: {pullFood: food},
        headers: {'Content-Type': 'application/json'}
      }).then( (user) => {

@@ -5,6 +5,7 @@ angular.module('FeedBeacon',[
 ])
   .controller('UsersController', UsersController)
   .controller('RestaurantsController', RestaurantsController)
+  .controller('SignoutController', SignoutController)
   .factory('User', function() {
     //include private variables here!!!
 
@@ -54,4 +55,5 @@ angular.module('FeedBeacon',[
 
   UsersController.$inject = ['$rootScope','$state','$http','User', 'Socket'];
   RestaurantsController.$inject = ['$rootScope', '$state', '$http', 'Restaurant', 'Socket']
+  SignoutController.$inject = ['$http', '$state', 'User','Restaurant'];
   Socket.$inject = ['$rootScope']

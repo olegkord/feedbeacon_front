@@ -11,9 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
 
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="https://thawing-plains-5333.herokuapp.com/socket.io/socket.io.js"></script>
     <script src="js/socket.js"></script>
     <script src="js/controllers/usersController.js"></script>
     <script src="js/controllers/restaurantsController.js"></script>
+    <script src="js/controllers/signOutController.js"></script>
     <script src="js/app.js"></script>
     <script src="js/appRouter.js"></script>
     <script src="js/jqueryInit.js"></script>
@@ -25,19 +27,21 @@
   <body class="grey lighten-3">
 
 <!-- CONDENSE THIS AS CUSTOM DIRECTIVE -->
-    <nav class="orange darken-3" role="navigation">
+    <nav ng-controller="SignoutController as signout" class="orange darken-3" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" ui-sref="home" class="brand-logo"><i>feedBeacon</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a ui-sref="signup">sign up as Eater</a></li>
         <li><a ui-sref="signup_restaurant">sign up as Feeder</a></li>
-        <li><a ui-sref="login">login</a></li>
-        <li><a ui-sref="signout">sign out</a></li>
+        <li><a ui-sref="login">login as Eater</a></li>
+        <li><a ui-sref="login_restaurant">login as Feeder</a></li>
+        <li><a ng-click="signout.globalSignOut()" ui-sref="home">sign out</a></li>
       </ul>
       <ul id="nav-mobile" class="side-nav" style="left: -250px;">
         <li><a ui-sref="signup">sign up as Eater</a></li>
         <li><a ui-sref="signup_restaurant">sign up as Feeder</a></li>
-        <li><a ui-sref="login">login</a></li>
-        <li><a ui-sref="signout">sign out</a></li>
+        <li><a ui-sref="login">login as Eater</a></li>
+        <li><a ui-sref="login_restaurant">login as Feeder</a></li>
+        <li><a ng-click="signout.globalSignOut()" ui-sref="home">sign out</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
