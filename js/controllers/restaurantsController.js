@@ -18,6 +18,7 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
     return Restaurant.currentRestoUser.foodTypes;
   }
 
+//'https://thawing-plains-5333.herokuapp.com/restaurant/' + Restaurant.currentRestoUser._id ||
   self.removeTag = function($event, tag) {
 
     $event.preventDefault();
@@ -25,7 +26,7 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
 
     $http({
       method: 'PUT',
-      url: 'https://thawing-plains-5333.herokuapp.com/restaurant/' + Restaurant.currentRestoUser._id || 'http://localhost:3000/restaurant/' + Restaurant.currentRestoUser._id,
+      url:  'http://localhost:3000/restaurant/' + Restaurant.currentRestoUser._id,
       data: {pullTag: tag},
       headers: {'Content-Type': 'application/json'}
     }).then( (restaurant) => {
@@ -34,11 +35,12 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
     })
   }
 
+//'https://thawing-plains-5333.herokuapp.com/restaurant/' + Restaurant.currentRestoUser._id ||
   self.addTag = function(newTag) {
     Restaurant.currentRestoUser.foodTypes.push(newTag);
     $http({
       method: 'PUT',
-      url: 'https://thawing-plains-5333.herokuapp.com/restaurant/' + Restaurant.currentRestoUser._id || 'http://localhost:3000/restaurant/' + Restaurant.currentRestoUser._id,
+      url: 'http://localhost:3000/restaurant/' + Restaurant.currentRestoUser._id,
       data: {newTag: newTag},
       headers: {'Content-Type': 'application/json'}
     }).then( (restaurant) => {
@@ -48,13 +50,14 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
     });
   }
 
+//'https://thawing-plains-5333.herokuapp.com/restaurant/login'||
   self.signIn = function() {
     if (Object.keys(self.logInRestaurant)) {
       Restaurant.restoUserForLogin = self.logInRestaurant;
     }
     $http({
       method: 'POST',
-      url: 'https://thawing-plains-5333.herokuapp.com/restaurant/login'||'http://localhost:3000/restaurant/login',
+      url: 'http://localhost:3000/restaurant/login',
       data: Restaurant.restoUserForLogin,
       headers: {'Content-Type': 'application/json'}
     }).then( (data) => {
@@ -73,29 +76,25 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
     $state.go('home');
   }
 
+//'https://thawing-plains-5333.herokuapp.com/restaurant/new' ||
   self.addRestoUser = function(user) {
     //These fields will depend on the required data inputs for restaurant.
     console.log('adding a restaurant user!');
     self.newRestaurant.foodTypes = self.newRestaurant.foodTypes.split(', ');
     $http({
       method: 'POST',
-      url: 'https://thawing-plains-5333.herokuapp.com/restaurant/new' || 'http://localhost:3000/restaurant/new',
+      url: 'http://localhost:3000/restaurant/new',
       data: self.newRestaurant,
       headers: {'Content-Type': 'application/json'}
     }).then( (restaurant) => {
       $state.go('login_restaurant');
     })
   }
-  ////socket listeners:
 
-  Socket.on('user reservation', (reservation) => {
-    console.log('RECEIVED AT RESTAURANT!');
-    if (intersect(self.getCurrentTags, reservation)) {
-
-    }
-
-  })
-
+  self.getReservations = function() {
+    Restaurant.updateReservations;
+    return Restaurant.reservations;
+  }
   //helper function:
   function intersect(target, incoming) {
     return incoming.some( (v) => {

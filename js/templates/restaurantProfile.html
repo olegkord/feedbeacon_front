@@ -45,17 +45,9 @@
     <br>
     <h2 class="flow-text center-align">Reservations:</h3>
     <ul class="container">
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
-      <li>BUTT</li>
+      <span ng-repeat="reservation in restaurant.getReservations() track by $index">
+        <li>{{ reservation }} </li>
+      </span>
     </ul>
   </div>
   </div>
