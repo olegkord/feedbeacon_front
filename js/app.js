@@ -24,20 +24,21 @@ angular.module('FeedBeacon',[
     //local variables here
     let self = this;
     Socket.on('reservation', (data) => {
-      console.log('socket stored?');
+      console.log('rootscope has it?');
     })
 
     //
     return {
       updateReservations: function() {
-        reservations.push($rootScope.reservation);
-        $rootScope.reservation = null;
+        if($rootScope.DATA){
+          this.reservations.push($rootScope.DATA);
+          $rootScope.DATA = null;
+        }
       },
       reservations: [],
       isLoggedIn: false,
       currentRestoUser: {},
       restoUserForLogin: {},
-      reservations: {}
     }
   }])
   .run(['$rootScope','$state','User', 'Restaurant', function($rootScope, $state, User, Restaurant) {

@@ -8,10 +8,10 @@ function Socket($rootScope) {
 let socket = io.connect('http://localhost:3000');
   return {
     on: function(eventName, callback) {
-      socket.on(eventName, () => {
-        $rootScope.socketData = arguments[0].data
-        let args = arguments;
-        $rootScope.$apply( function() {
+      socket.on(eventName, (data) => {
+        let args = data;
+        $rootScope.DATA = data;
+        $rootScope.$apply( () => {
           callback.apply(socket, args);
         });
       });
@@ -19,7 +19,7 @@ let socket = io.connect('http://localhost:3000');
     emit: function(eventName, data, callback) {
       socket.emit(eventName, data, () => {
         let args = arguments;
-        $rootScope.$apply( function() {
+        $rootScope.$apply( () => {
           if (callback) {
             callback.apply(socket, args);
           }

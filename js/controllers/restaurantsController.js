@@ -92,7 +92,7 @@ function RestaurantsController($rootScope, $state, $http, Restaurant, Socket) {
   }
 
   self.getReservations = function() {
-    Restaurant.updateReservations;
+    Restaurant.updateReservations();
     return Restaurant.reservations;
   }
   //helper function:
