@@ -5,7 +5,7 @@ console.log('Including socket factory');
 
 
 function Socket($rootScope) {
-let socket = io.connect('http://localhost:3000');
+let socket = io.connect('https://thawing-plains-5333.herokuapp.com');
   return {
     on: function(eventName, callback) {
       socket.on(eventName, (data) => {

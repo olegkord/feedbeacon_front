@@ -19,10 +19,10 @@ function UsersController($rootScope, $state, $http, User, Socket) {
     if (Object.keys(self.logInUser)) {
       User.userForLogin = self.logInUser;
     }
-    //'https://thawing-plains-5333.herokuapp.com/user/login'||
+    //
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/user/login',
+      url: 'https://thawing-plains-5333.herokuapp.com/user/login'||'http://localhost:3000/user/login',
       data: User.userForLogin,
       headers: {'Content-Type': 'application/json'}
     }).then( (data) => {
@@ -42,13 +42,13 @@ function UsersController($rootScope, $state, $http, User, Socket) {
     $state.go('home');
   }
 
-//'https://thawing-plains-5333.herokuapp.com/user/new'||
+//
   self.addUser = function(user) {
     console.log('adding a user!');
     self.newUser.foodTypes = self.newUser.foodTypes.split(', ');
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/user/new',
+      url: 'https://thawing-plains-5333.herokuapp.com/user/new'||'http://localhost:3000/user/new',
       data: self.newUser,
       headers: {'Content-Type': 'application/json'}
     }).then( (user) => {
@@ -82,10 +82,10 @@ function UsersController($rootScope, $state, $http, User, Socket) {
      console.log('removing like');
      $event.preventDefault();
      $event.stopPropagation();
-//'https://thawing-plains-5333.herokuapp.com/user/' + User.currentUser._id||
+//
      $http({
        method: 'PUT',
-       url: 'http://localhost:3000/user/' + User.currentUser._id,
+       url: 'https://thawing-plains-5333.herokuapp.com/user/' + User.currentUser._id||'http://localhost:3000/user/' + User.currentUser._id,
        data: {pullFood: food},
        headers: {'Content-Type': 'application/json'}
      }).then( (user) => {
